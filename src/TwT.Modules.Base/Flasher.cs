@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting.Internal;
 using TwT.Modules.Base.Processes;
 
 namespace TwT.Modules.Base
@@ -16,6 +15,11 @@ namespace TwT.Modules.Base
 		/// Process that can be used to configure MassTransit
 		/// </summary>
 		private MassTransitProcess? _massTransit;
+
+		/// <summary>
+		/// Process that can be used to configure ApplicationInsights
+		/// </summary>
+		private ApplicationInsightsProcess? _applicationInsights;
 
 		/// <summary>
 		/// Builder for web applications and services
@@ -55,8 +59,12 @@ namespace TwT.Modules.Base
 		/// </summary>
 		private void FlashBoot()
 		{
+			_applicationInsights = new ApplicationInsightsProcess(Configuration);
+			_applicationInsights.FlashApplicationInsights(ApplicationBuilder.Services);
+
 			_massTransit = new MassTransitProcess(Configuration);
 			_massTransit.FlashMassTransit(ApplicationBuilder.Services, FlashMassTransitConsumers);
+
 			FlashServices(ApplicationBuilder.Services, Configuration);
 		}
 

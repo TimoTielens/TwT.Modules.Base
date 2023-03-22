@@ -21,6 +21,8 @@ namespace TwT.Modules.Base.Test.Web.Api.Controllers
 		[HttpGet(Name = "GetWeatherForecast")]
 		public IEnumerable<WeatherForecast> Get()
 		{
+			_logger.LogWarning("GetWeatherForecast is called");
+
 			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
 			{
 				Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
