@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TwT.Modules.Base\TwT.Modules.Base\TwT.Modules.Base.csproj" />
+    <ProjectReference Include="..\TwT.Modules.Base\TwT.Modules.Base.csproj" />
   </ItemGroup>
 
 </Project>

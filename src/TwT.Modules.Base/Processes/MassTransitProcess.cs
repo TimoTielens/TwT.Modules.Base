@@ -23,8 +23,7 @@ namespace TwT.Modules.Base.Processes
 		/// <exception cref="Exception">Configuration section cannot be found 'MassTransit'</exception>
 		public MassTransitProcess(IConfiguration configuration)
 		{
-			Configuration = configuration.GetSection("MassTransit").Get<MassTransitConfiguration>() 
-			                ?? throw new ArgumentNullException(nameof(configuration));
+			Configuration = configuration.GetSection("MassTransit").Get<MassTransitConfiguration>() ?? throw new ArgumentNullException(nameof(configuration));
 
 			if (Configuration == null)
 				throw new Exception("Configuration section cannot be found 'MassTransit'");
